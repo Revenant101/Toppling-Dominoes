@@ -1,4 +1,7 @@
-async function main(playerId, position) {
+function userGetMove(playerId, position) {
+    console.log("THIS IS THE START OF MY FUNCTION OK LOOK HERE PLEASE. BELOW ME IS THE GAMEBOARD THAT IS SUPPOSEDLY BEING PASSED IN TO USERGETMOVE")
+    console.log(position.rows)
+function main(playerId, position) {
     gameboard = position.rows
 
     // console.log("Gameboard:");
@@ -34,8 +37,10 @@ async function main(playerId, position) {
     console.log(`${player}'s best move is to play on board ${bestMove[2]} and to knock down the domino in column: ${bestMove[3] + 1} to the ${bestMove[4].toLowerCase()} with a heuristic value of ${bestMove[0]}`);
 
     if (bestMove[4] === "Left") {
+        console.log(position.getLeftPushOption(rowToNum[bestMove[2]], bestMove[3]))
         return position.getLeftPushOption(rowToNum[bestMove[2]], bestMove[3])
     } else if (bestMove[4] === "Right") {
+        console.log(position.getRightPushOption(rowToNum[bestMove[2]], bestMove[3]))
         return position.getRightPushOption(rowToNum[bestMove[2]], bestMove[3])
     } else {
         console.log("something went wrong while returning option")
@@ -260,5 +265,6 @@ function simulateToppling(gameboard, row, col, direction) {
 
     return total;
 }
-
-main(playerId, position);
+    var option;
+    option = main(playerId, position);
+}
